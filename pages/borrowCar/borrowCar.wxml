@@ -1,0 +1,20 @@
+<!--pages/borrowCar/borrowCar.wxml-->
+<view class="addinfo">
+<form bindsubmit="formSubmit">
+ <view class="car-info">
+    <span class="">姓名：</span>
+    <input class="input" name="Name" placeholder="请输您的姓名"></input>
+  </view>
+  <view class="car-info">
+    <span class="">手机号：</span>
+    <input class="input" name="phoneNum" placeholder="请输入您的手机号码" ></input>
+  </view>
+  <view class="car-info">
+    <span class="">车辆VIN号:</span>
+    <input class="input" name="vin" placeholder="请输入车辆VIN号" value="{{vin}}"></input>
+  </view>
+  <view class="comfirm-button">
+    <button class="comfirm" type="primary" form-type="submit">确认</button>
+  </view>
+</form>
+</view>

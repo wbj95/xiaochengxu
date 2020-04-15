@@ -1,0 +1,21 @@
+<!--pages/server/server.wxml-->
+<view class="all">
+<view class="borrow">
+  <!-- <navigator url='' class="click"> -->
+  <view class="logo">
+     <image bindtap='getScancode' src='../../images/borrow_car.png' ></image>
+  <text>借车扫码</text>
+  </view>
+
+   <!-- </navigator> -->
+</view>
+
+<view class="statistics">
+<navigator url='../statistics/statistics'  class="click" >
+   <image src='../../images/statistics.png' ></image>
+   <text>统计</text>
+</navigator>
+
+</view>
+ 
+</view>
