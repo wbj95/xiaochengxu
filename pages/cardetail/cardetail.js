@@ -30,7 +30,7 @@ Page({
     latitude: '',
     longitude: '',
     textData: {},
-    dataoneWeek:[]
+    dataoneWeek:[]//每天点火启动次数数组
   },
 
   /**
@@ -48,6 +48,7 @@ Page({
     var myAmapFun = new amapFile.AMapWX({
       key: key
     });
+    //判断用户是否授权小程序获取定位权限
     wx.getSetting({
       success(res) {
         //从来没有授权过定位
@@ -86,7 +87,7 @@ Page({
     //判断用户定位权限是否开启
 
 
-    //获取车辆数据
+    //获取单台vin车辆数据
     wx.request({
       url: 'http://120.26.174.202:8080/carmanage/CarInfo/getCarInfoByVin?vin=' + options.vin,
       method: 'GET',

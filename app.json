@@ -9,7 +9,8 @@
     "pages/statistics/statistics",
     "pages/borrowCar/borrowCar",
     "pages/navigation_walk/navigation_walk",
-    "pages/oneWeekTrip/oneWeekTrip"
+    "pages/oneWeekTrip/oneWeekTrip",
+    "pages/customer_server/customer_server"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +24,7 @@
     }
   },
   "tabBar": {
-    "color": "#dddddd",
+    "color": "#222222",
     "selectedColor": "#459ae9",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
@@ -39,6 +40,12 @@
         "iconPath": "images/server.png",
         "selectedIconPath": "images/select_server.png",
         "text": "服务"
+      },
+      {
+        "pagePath": "pages/customer_server/customer_server",
+        "iconPath": "images/customerServer.png",
+        "selectedIconPath": "images/customerServer_select.png",
+        "text": "智能客服"
       }
     ]
   },

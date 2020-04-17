@@ -56,7 +56,7 @@ Page({
       viewShowed: false,
       inputVal: e.detail.value
     });
-   
+   //模糊查询
     wx.request({
       url: "http://120.26.174.202:8080/carmanage/CarInfo/fuzzyQuery?vin=" + e.detail.value,
       data: {
@@ -68,14 +68,14 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-          carInfoList: res.data.fuzzyQuery
+          carInfoList: res.data.fuzzyQuery//模糊查询结果
         })
       }
     });
   },
   onLoad: function () {
     var that = this;
-    //传输项目名和VIN号
+   //加载中
     wx.showLoading({ title: '加载中', icon: 'loading', duration: 20000 });
         //成功获取
         wx.request({
@@ -84,10 +84,10 @@ Page({
           method:'GET',
           data:{},
           header: { 'Accept': 'application/json'},
-          
+          //成功获取
           success:function(res){
-            //获取数据成功并赋值给projectName和carVIN
-            wx.hideLoading()
+       
+            wx.hideLoading()//加载中隐藏
             console.log(res.data.data);
             console.log(res.data);
             that.setData({ carInfoList: res.data.data
@@ -119,6 +119,7 @@ Page({
       　　　　wx.stopPullDownRefresh() //停止下拉刷新
     　　　　}, 1000);
   },
+  //重新加载数据
   updateBlogs: function () {
     var that = this
     wx.request({
@@ -129,7 +130,6 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        //获取数据成功并赋值给projectName和carVIN
         wx.hideLoading()
         console.log(res.data.data);
         console.log(res.data);
