@@ -7,8 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataInfo: [
-      {
+    dataInfo: [{
         id: 1,
         subNum: "C1609050001",
         percentage: 36,
@@ -25,53 +24,52 @@ Page({
         weight: 100
       }
     ],
-   listMilege:null,
-   listStart:[],
-   listData:[],
-   imageurl1: "../../images/select_DESC.png",
+    listMilege: null,
+    listStart: [],
+    listData: [],
+    imageurl1: "../../images/select_DESC.png",
     imageurl2: "../../images/DESC.png",
-    startPre:"本周点火车辆数占比",
+    startPre: "本周点火车辆数占比",
   },
-  ringShow: function () {
+  ringShow: function() {
     console.log("qwqw");
 
-      var item = this.data.dataInfo[0];
-      let ring = {
-        canvasId: "ringGraph", // 与canvas-id一致
-        type: "ring",
-        series: [
-          {
-            name: "点火车辆数",
-            data: item.percentage,
-            color: '#ff6600'
-          },
-          {
-            name: "未完成",
-            data: 100 - item.percentage,
-            color: '#eeeeee'
-          }
-        ],
-        width: 100,
-        height: 100,
-        dataLabel: false,
-        legend: false,
-        title: { // 显示百分比
-          name: item.percentage + '%',
-          color: '#333333',
-          fontSize: 14
+    var item = this.data.dataInfo[0];
+    let ring = {
+      canvasId: "ringGraph", // 与canvas-id一致
+      type: "ring",
+      series: [{
+          name: "点火车辆数",
+          data: item.percentage,
+          color: '#ff6600'
         },
-        extra: {
-          pie: {
-            offsetAngle: -90
-          },
-          ringWidth: 6,
+        {
+          name: "未完成",
+          data: 100 - item.percentage,
+          color: '#eeeeee'
         }
-      };
-      new CHARTS(ring);
+      ],
+      width: 100,
+      height: 100,
+      dataLabel: false,
+      legend: false,
+      title: { // 显示百分比
+        name: item.percentage + '%',
+        color: '#333333',
+        fontSize: 14
+      },
+      extra: {
+        pie: {
+          offsetAngle: -90
+        },
+        ringWidth: 6,
+      }
+    };
+    new CHARTS(ring);
 
   },
-//本周启动次数降序排序
-  choosesort1:function(e){
+  //本周启动次数降序排序
+  choosesort1: function(e) {
     var that = this;
     that.setData({
       listData: this.data.listStart,
@@ -80,112 +78,118 @@ Page({
     });
   },
   //按照本周里程排序
-  choosesort2: function (e) {
+  choosesort2: function(e) {
     var that = this;
     console.log("mileage");
     that.setData({
       listData: this.data.listMilege,
       imageurl1: "../../images/DESC.png",
-      imageurl2:"../../images/select_DESC.png"
+      imageurl2: "../../images/select_DESC.png"
     });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-   //初始化image的src
+  onLoad: function(options) {
+    //初始化image的src
     var that = this;
-    wx.showLoading({ title: '加载中', icon: 'loading', duration: 10000 });
+    wx.showLoading({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    });
 
     //成功获取
     wx.request({
-     
+
       //URL
       url: 'http://120.26.174.202:8080/carmanage/CarInfo/getCarRanking',
       method: 'GET',
       data: {},
-      header: { 'Accept': 'application/json' },
+      header: {
+        'Accept': 'application/json'
+      },
 
-      success: function (res) {
-       
+      success: function(res) {
+
         wx.hideLoading();
-        var lenght=0;
-        var startNum=0;
-      //获取车辆数
-        for (var i in res.data.CarMilege){
-        lenght++;
-          if (res.data.CarMilege[i].dataStart != 0) {    //获取点火车辆数
-startNum++;
+        var lenght = 0;
+        var startNum = 0;
+        //获取车辆数
+        for (var i in res.data.CarMilege) {
+          lenght++;
+          if (res.data.CarMilege[i].dataStart != 0) { //获取点火车辆数
+            startNum++;
+          }
         }
-      }
-  
 
-        console.log("总共多少辆车："+lenght);
+
+        console.log("总共多少辆车：" + lenght);
         console.log("点火车辆数：" + startNum)
-        var per = startNum/lenght;
+        var per = startNum / lenght;
         console.log("占比：" + per.toFixed(2))
-        that.setData({ 
+        that.setData({
           listData: res.data.CarStart,
           listMilege: res.data.CarMilege,
           listStart: res.data.CarStart,
-          'dataInfo[0].percentage': per.toFixed(2)*100,
-          'dataInfo[1].percentage': 1-per
-         });
+          'dataInfo[0].percentage': per.toFixed(2) * 100,
+          'dataInfo[1].percentage': 1 - per
+        });
         that.ringShow();
       }
 
     })
 
-   
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

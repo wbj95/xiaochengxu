@@ -59,3 +59,19 @@
 .page-section{
   margin-bottom: 20rpx;
 }
+.replay_con{
+  color: rgb(10, 133, 233)
+}
+.replay_top{
+  color: rgb(7, 7, 7)
+}
+.exchangeImage{
+  height: 50rpx;
+  width: 50rpx;
+  margin-right:20rpx
+}
+.voice_text{
+  width: 750rpx;
+  text-align: center;
+  margin-right: 20rpx
+}

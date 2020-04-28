@@ -10,12 +10,13 @@
     "pages/borrowCar/borrowCar",
     "pages/navigation_walk/navigation_walk",
     "pages/oneWeekTrip/oneWeekTrip",
-    "pages/customer_server/customer_server"
+    "pages/customer_server/customer_server",
+    "pages/fileList/fileList"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "智联交互小程序",
+    "navigationBarTitleText": "智联交互小助手",
     "navigationBarTextStyle": "black"
   },
   "permission": {
@@ -45,9 +46,21 @@
         "pagePath": "pages/customer_server/customer_server",
         "iconPath": "images/customerServer.png",
         "selectedIconPath": "images/customerServer_select.png",
-        "text": "智能客服"
+        "text": "知识库"
+      },
+      {
+        "pagePath": "pages/fileList/fileList",
+        "iconPath": "images/file.png",
+        "selectedIconPath": "images/file_select.png",
+        "text": "知识文件"
       }
     ]
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99"
+    }
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

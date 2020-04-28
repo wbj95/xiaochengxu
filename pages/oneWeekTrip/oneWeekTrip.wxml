@@ -4,7 +4,7 @@
     <view class="th">最近7天用车行程</view>
   </view>
   </view>
-<view class='con'>
+<view class='con' wx:if="{{datastyle==1}}">
  <!-- 订单列表 -->
  <block wx:for-items="{{Trip}}" wx:key="key" >
  <view class='card b-shadow' bindtap='toggleBtn' id="{{item.id}}">
@@ -26,4 +26,7 @@
   </view>
  </view>
  </block>
+</view>
+<view  class='con' wx:if="{{datastyle==0}}">
+<text class="nodata">无数据</text>
 </view>
